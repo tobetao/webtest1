@@ -1,0 +1,50 @@
+  <!-- category -->
+
+  <div class="vertical">CATEGORY</div>
+  <div class="col-md-5 news-block">
+    {% for category, items in category_news_left %}
+    <h5 class="category-title">{{ category }}</h5>
+    <ul class="list-group news-list">
+      {% for item in items %}
+      <li class="list-group-item news-tooltip news-title" data-id="{{ item.id }}" title="{{ item.brief }}"><a href="{{ item.url }}" target="_blank"><font color="black">{{ item.brief }}</font></a></li>
+      <div class="content" id="content-{{ item.id }}" style="display:none;">
+        <h3>{{ item.brief }}</h3>
+        <p>{{ item.fulltext }}</p>
+      </div>
+      {% endfor %}
+    </ul>
+    {% endfor %}
+  </div>
+  
+    <div class="vertical">CATEGORY</div>
+  <div class="col-md-5 news-block">
+    {% for category, items in category_news_right %}
+    <h5 class="category-title">{{ category }}</h5>
+    <ul class="list-group news-list">
+      {% for item in items %}
+      <li class="list-group-item news-tooltip news-title" data-id="{{ item.id }}" title="{{ item.brief }}"><a href="{{ item.url }}" target="_blank"><font color="black">{{ item.brief }}</font></a></li>
+      <div class="content" id="content-{{ item.id }}" style="display:none;">
+        <h3>{{ item.brief }}</h3>
+        <p>{{ item.fulltext }}</p>
+      </div>
+      {% endfor %}
+    </ul>
+    {% endfor %}
+  </div>
+
+  <!-- realtime -->
+  <div class="vertical">REALTIME</div>
+  <div class="col-md-5 news-block" id="realtime-news-block">
+    <!--
+    <h5 class="category-title">Real Time</h5>
+    -->
+    <ul class="list-group news-list">
+      {% for item in realtime_news_list %}
+      <li class="list-group-item news-tooltip news-title" data-id="{{ item.id }}" title="{{ item.brief }}"><a href="{{ item.url }}" target="_blank"><font color="black">{{ item.brief }}</font></a></li>
+      <div class="content" id="content-{{ item.id }}" style="display:none;">
+        <h3>{{ item.brief }}</h3>
+        <p>{{ item.fulltext }}</p>
+      </div>
+      {% endfor %}
+    </ul>
+  </div>

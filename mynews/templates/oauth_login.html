@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Log in with Google Account</title>
+  <link type="text/css" rel="stylesheet" href="/static/css/bootstrap.min.css" />
+  <link type="text/css" rel="stylesheet" href="/static/css/mynews.css" />
+</head>
+<body>
+  <div class="pagecenter">
+    <font face="Catull" size="8"><span style="color:blue;">T</span><span style="color:yellow;">o</span><span style="color:red;">p</span><span style="color:blue;">T</span><span style="color:green;">o</span><span style="color:red;">d</span><span style="color:blue;">a</span><span style="color:green;">y</span>
+    <form method="get" action="{{ auth_url }}" style="margin-top:30px;">
+      <input type="hidden" name="response_type" value="code"/>
+      <input type="hidden" name="client_id" value="{{ client_id }}"/>
+      <input type="hidden" name="redirect_uri" value="{{ redirect_uri }}"/>
+      <input type="hidden" name="scope" value="{{ scope }}"/>
+      <input type="hidden" name="state" value="{{ continue }}"/>
+      <input type="submit" class="btn btn-default" value="Sign in with Google account" />
+    </form>
+  </div>
+</body>
+</html>
+

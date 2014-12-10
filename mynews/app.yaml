@@ -1,0 +1,29 @@
+application: toptodayus 
+version: 1
+runtime: python27
+api_version: 1
+threadsafe: true
+
+handlers:
+- url: /static
+  static_dir: static
+- url: /_ah/login_required
+  script: handlers.oauth.app
+- url: /logout
+  script: handlers.oauth.app
+- url: /code
+  script: handlers.oauth.app
+- url: /refresh
+  script: handlers.newsfeed.application
+- url: /delete
+  script: handlers.newsfeed.application
+- url: /deleteall
+  script: handlers.newsfeed.application
+- url: /.*
+  script: handlers.mynews.app
+
+libraries:
+- name: webapp2
+  version: latest
+- name: jinja2
+  version: latest

@@ -1,0 +1,4 @@
+cron:
+- description: refresh news
+  url: /refresh
+  schedule: every 10 mins

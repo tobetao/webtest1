@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block extra_css %}
+<link type="text/css" rel="stylesheet" href="/static/css/tooltipster.css" />
+<link type="text/css" rel="stylesheet" href="/static/css/tooltipster-shadow.css" />
+<link type="text/css" rel="stylesheet" href="/static/css/mynews.css" />
+{% endblock %}
+
+{% block extra_js %}
+<script type="text/javascript" src="/static/js/jquery.tooltipster.min.js"></script>
+<script type="text/javascript" src="/static/js/mynews.js"></script>
+{% endblock %}
+
+{% block content %}
+<font face="Catull" size="6"><span style="color:blue;">T</span><span style="color:yellow;">o</span><span style="color:red;">p</span><span style="color:blue;">T</span><span style="color:green;">o</span><span style="color:red;">d</span><span style="color:blue;">a</span><span style="color:green;">y</span>
+<a href="javascript:;" data-toggle="modal" data-target="#setting-modal"><span class="glyphicon glyphicon-cog" style="font-size:15px;"></span></a>
+
+</font><font size="3"></font>Welcome {{ user.name }}, {{ user.email }}  <a href="/logout">logout</a></font>
+ 
+<!--  <table width="90%">
+  <tr>
+    <td><font size="8"><span style="color:blue;">m</span><span style="color:yellow;">y</span><span style="color:red;">N</span><span style="color:blue;">e</span><span style="color:green;">w</span><span style="color:red;">s</span></td>
+    <td style="text-align:right"><a href="javascript:;" data-toggle="modal" data-target="#setting-modal"><span class="glyphicon glyphicon-cog" style="font-size:15px;"></span></a><div>{{ user.name }}, {{ user.email }}<a href="/logout">logout</a></div></td>
+  </tr>
+</table>    -->
+
+<div class="row" id="news-block">
+</div>
+
+<div class="modal fade" id="setting-modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Settings</h4>
+      </div>
+      <div class="modal-body">
+        <table class="table table-bordered">
+          <tr style="background:#EFEFEF;">
+            <th>Category Name</th>
+            <th>Keywords</th>
+          </tr>
+          {% for c, keywords in categories.iteritems() %}
+          <tr>
+            <td><input type="text" name="category" value="{{ c }}"/></td>
+            <td><input type="text" size="20" name="keywords" value="{{ ' '.join(keywords) }}"/></td>
+          </tr>
+          {% endfor %}
+          {% for i in range(10 - categories|length) %}
+          <tr>
+            <td><input type="text" name="category"/></td>
+            <td><input type="text" size="20" name="keywords"/></td>
+          </tr>
+          {% endfor %}
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id="save-setting-btn">Save changes</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+{% endblock %}
+
